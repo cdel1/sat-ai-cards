@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AT SaT AI Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            padding: 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border: 1px solid #2d2d44;
+            border-radius: 12px;
+            padding: 30px;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border-color: #FFE600;
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(255, 230, 0, 0.1);
+        }
+
+        .card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        .card-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-text-group {
+            flex: 1;
+        }
+
+        .card-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .card-title {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-tagline {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .card-arrow {
+            width: 24px;
+            height: 24px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .card-arrow svg {
+            stroke: #FFE600;
+            stroke-width: 2;
+            fill: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                grid-gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-grid">
+        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/SitePages/Go-to-market.aspx" class="card" target="_parent">
+            <div class="card-content">
+                <div class="card-text-group">
+                    <div class="card-title-wrapper">
+                        <span class="card-icon">📦</span>
+                        <span class="card-title">Go-to-Market</span>
+                    </div>
+                    <p class="card-tagline">Explore what you can offer client today</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/SitePages/AI-Tools-%26-Prompt-Library.aspx" class="card" target="_parent">
+            <div class="card-content">
+                <div class="card-text-group">
+                    <div class="card-title-wrapper">
+                        <span class="card-icon">🚀</span>
+                        <span class="card-title">AI Tools</span>
+                    </div>
+                    <p class="card-tagline">Boost your daily work</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/SitePages/Learning.aspx" class="card" target="_parent">
+            <div class="card-content">
+                <div class="card-text-group">
+                    <div class="card-title-wrapper">
+                        <span class="card-icon">📚</span>
+                        <span class="card-title">AI Learning</span>
+                    </div>
+                    <p class="card-tagline">Check out actionable courses</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/SitePages/Use-case-app.aspx" class="card" target="_parent">
+            <div class="card-content">
+                <div class="card-text-group">
+                    <div class="card-title-wrapper">
+                        <span class="card-icon">💼</span>
+                        <span class="card-title">Use Case Tracker</span>
+                    </div>
+                    <p class="card-tagline">Got an idea? Reach out</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/SitePages/DBS.aspx" class="card" target="_parent">
+            <div class="card-content">
+                <div class="card-text-group">
+                    <div class="card-title-wrapper">
+                        <span class="card-icon">📊</span>
+                        <span class="card-title">DBS</span>
+                    </div>
+                    <p class="card-tagline">Unique data for unique insights</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
