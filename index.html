@@ -19,19 +19,27 @@
     
             .card-grid {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(6, 1fr);
                 grid-gap: 20px;
                 max-width: 1400px;
                 margin: 0 auto;
             }
     
-            /* Zentriert die letzten 2 Karten */
-            .card:nth-last-child(2) {
-                grid-column: 2;
+            /* Erste 3 Karten: je 2 Spalten breit */
+            .card:nth-child(1),
+            .card:nth-child(2),
+            .card:nth-child(3) {
+                grid-column: span 2;
             }
     
-            .card:nth-last-child(1) {
-                grid-column: 3;
+            /* Vierte Karte: startet bei Spalte 2, 2 Spalten breit */
+            .card:nth-child(4) {
+                grid-column: 2 / span 2;
+            }
+    
+            /* Fünfte Karte: 2 Spalten breit (folgt automatisch) */
+            .card:nth-child(5) {
+                grid-column: span 2;
             }
     
             .card {
@@ -116,10 +124,12 @@
                     grid-template-columns: repeat(2, 1fr);
                 }
                 
-                /* Reset centering auf kleineren Screens */
-                .card:nth-last-child(2),
-                .card:nth-last-child(1) {
-                    grid-column: auto;
+                .card:nth-child(1),
+                .card:nth-child(2),
+                .card:nth-child(3),
+                .card:nth-child(4),
+                .card:nth-child(5) {
+                    grid-column: span 1;
                 }
             }
     
