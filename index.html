@@ -19,16 +19,17 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             grid-gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
-            justify-items: center;
         }
-        
+
+        .card:nth-child(4) {
+            grid-column: 2 / 3;
+        }
+
         .card {
-            width: 100%;
-            max-width: 450px; /* Adjust this to control card width */
             background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
             border: 1px solid #2d2d44;
             border-radius: 12px;
