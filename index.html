@@ -19,27 +19,13 @@
     
             .card-grid {
                 display: grid;
-                grid-template-columns: repeat(6, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 grid-gap: 20px;
-                max-width: 1400px;
-                margin: 0 auto;
             }
-    
-            /* Erste 3 Karten: je 2 Spalten breit */
-            .card:nth-child(1),
-            .card:nth-child(2),
-            .card:nth-child(3) {
-                grid-column: span 2;
-            }
-    
-            /* Vierte Karte: startet bei Spalte 2, 2 Spalten breit */
+            
+            /* Second row centered */
             .card:nth-child(4) {
-                grid-column: 2 / span 2;
-            }
-    
-            /* Fünfte Karte: 2 Spalten breit (folgt automatisch) */
-            .card:nth-child(5) {
-                grid-column: span 2;
+                grid-column: 1 / 2;
             }
     
             .card {
@@ -143,6 +129,23 @@
 </head>
 <body>
     <div class="card-grid">
+        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/" class="card" target="_parent">
+            <div class="card-content">
+                <div class="card-text-group">
+                    <div class="card-title-wrapper">
+                        <span class="card-icon">🏢</span>
+                        <span class="card-title">EW CTO Office Homepage</span>
+                    </div>
+                    <p class="card-tagline">CTO Office resources and updates</p>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 18l6-6-6-6"></path>
+                    </svg>
+                </div>
+            </div>
+        </a>
+
         <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/SitePages/Go-to-market.aspx" class="card" target="_parent">
             <div class="card-content">
                 <div class="card-text-group">
@@ -219,23 +222,6 @@
                         <span class="card-title">DBS</span>
                     </div>
                     <p class="card-tagline">Unique data for unique insights</p>
-                </div>
-                <div class="card-arrow">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 18l6-6-6-6"></path>
-                    </svg>
-                </div>
-            </div>
-        </a>
-
-        <a href="https://eygermany.sharepoint.com/sites/EY-P-AIHouse/" class="card" target="_parent">
-            <div class="card-content">
-                <div class="card-text-group">
-                    <div class="card-title-wrapper">
-                        <span class="card-icon">🏢</span>
-                        <span class="card-title">EW CTO Office Homepage</span>
-                    </div>
-                    <p class="card-tagline">CTO Office resources and updates</p>
                 </div>
                 <div class="card-arrow">
                     <svg viewBox="0 0 24 24">
