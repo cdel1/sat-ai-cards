@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYnable AI Termine - Tabelle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a24;
+            padding: 20px;
+        }
+
+        .table-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border: 1px solid #2d2d44;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+
+        th {
+            color: #FFE600;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid #2d2d44;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #2d2d44;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        tbody tr:hover {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            transform: translateX(4px);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            color: #ffffff;
+            padding: 16px;
+            font-size: 14px;
+        }
+
+        .thema-cell {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .termin-cell {
+            color: #9ca3af;
+            white-space: nowrap;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-erledigt {
+            background: #10b981;
+            color: #ffffff;
+        }
+
+        .status-anmeldelink {
+            background: #f59e0b;
+            color: #ffffff;
+        }
+
+        .status-tbd {
+            background: #6b7280;
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            th, td {
+                padding: 12px 8px;
+                font-size: 13px;
+            }
+
+            th {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .table-container {
+                border-radius: 8px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tbody {
+                display: table-row-group;
+            }
+
+            tr {
+                display: table-row;
+            }
+
+            th, td {
+                display: table-cell;
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            /* Mobile: Card-style layout */
+            .table-container {
+                overflow: visible;
+            }
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 16px;
+                border: 1px solid #2d2d44;
+                border-radius: 8px;
+                padding: 12px;
+                background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            }
+
+            tr:hover {
+                transform: none;
+            }
+
+            td {
+                padding: 8px 0;
+                border: none;
+                position: relative;
+                padding-left: 45%;
+                text-align: right;
+            }
+
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                padding-left: 0;
+                font-weight: 600;
+                color: #9ca3af;
+                text-align: left;
+            }
+
+            .thema-cell {
+                padding-left: 0;
+                text-align: left;
+                font-size: 16px;
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #2d2d44;
+            }
+
+            .thema-cell:before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Thema</th>
+                    <th>Termin</th>
+                    <th>Dauer</th>
+                    <th>Coach</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Mock data from CSV
+        const mockData = [
+            {
+                Titel: "EYnable AI - Workshop 1: Digital Diligence Assistant",
+                Thema: "Digital Diligence Assistant",
+                Termin: "2025-11-04T11:00:00",
+                Dauer: "1 Stunde",
+                Coach: "Andrea Simioni",
+                Location: "Vor Ort",
+                Status: "Erledigt"
+            },
+            {
+                Titel: "EYnable AI - Workshop 2: AI Agents",
+                Thema: "AI Agents",
+                Termin: "2025-11-13T09:00:00",
+                Dauer: "1 Stunde",
+                Coach: "Lukas Schindlegger",
+                Location: "Online via Teams",
+                Status: "Erledigt"
+            },
+            {
+                Titel: "EYnable AI - Workshop 3: n8n - Automatisierungsplattform",
+                Thema: "n8n - Automatisierungsplattform",
+                Termin: "2025-11-19T10:00:00",
+                Dauer: "1 Stunde",
+                Coach: "Dino Celi",
+                Location: "Online via Teams",
+                Status: "Erledigt"
+            },
+            {
+                Titel: "EYnable AI - Workshop 4: KI für Python Scripts und VBA",
+                Thema: "KI für Python Scripts und VBA",
+                Termin: "2025-11-25T13:30:00",
+                Dauer: "1,5 Stunden",
+                Coach: "Alwin Saraswat",
+                Location: "Hybrid",
+                Status: "Erledigt"
+            },
+            {
+                Titel: "EYnable AI - Workshop 5: CoPilot Use Cases",
+                Thema: "CoPilot Use Cases - Gemeinsame Ausarbeitung",
+                Termin: "2025-12-04T09:00:00",
+                Dauer: "1h",
+                Coach: "Korbinian Lorenz",
+                Location: "Vor Ort",
+                Status: "Erledigt"
+            }
+        ];
+
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('de-DE', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function getStatusClass(status) {
+            if (!status) return 'status-tbd';
+            const statusLower = status.toLowerCase();
+            if (statusLower.includes('erledigt')) return 'status-erledigt';
+            if (statusLower.includes('anmeldelink')) return 'status-anmeldelink';
+            return 'status-tbd';
+        }
+
+        function sortByPlannedFirst(items) {
+            const now = new Date();
+            return items.sort((a, b) => {
+                const dateA = new Date(a.Termin);
+                const dateB = new Date(b.Termin);
+
+                const aIsFuture = dateA >= now;
+                const bIsFuture = dateB >= now;
+
+                // Upcoming events first
+                if (aIsFuture && !bIsFuture) return -1;
+                if (!aIsFuture && bIsFuture) return 1;
+
+                // Within same category (future or past), sort by date ascending
+                return dateA - dateB;
+            });
+        }
+
+        function createTableRow(item) {
+            return `
+                <tr>
+                    <td class="thema-cell" data-label="Thema">${item.Thema || 'Kein Thema'}</td>
+                    <td class="termin-cell" data-label="Termin">${formatDate(item.Termin)}</td>
+                    <td data-label="Dauer">${item.Dauer || 'N/A'}</td>
+                    <td data-label="Coach">${item.Coach || 'N/A'}</td>
+                    <td data-label="Location">${item.Location || 'N/A'}</td>
+                    <td data-label="Status"><span class="status-badge ${getStatusClass(item.Status)}">${item.Status || 'TBD'}</span></td>
+                </tr>
+            `;
+        }
+
+        function renderTable(items) {
+            const tableBody = document.getElementById('tableBody');
+            const sortedItems = sortByPlannedFirst([...items]);
+            tableBody.innerHTML = sortedItems.map(item => createTableRow(item)).join('');
+        }
+
+        // Initialize with mock data
+        renderTable(mockData);
+    </script>
+</body>
+</html>
